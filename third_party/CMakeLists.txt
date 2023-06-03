@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 3.20.0 FATAL_ERROR)
 
 add_subdirectory(glfw)
+add_subdirectory(curl)
 
 file(GLOB IMGUI_SOURCES 
     "${CMAKE_CURRENT_LIST_DIR}/imgui/*.cpp" 
