@@ -1,0 +1,77 @@
+{
+	"version": 2,
+	"cmakeMinimumRequired": {
+		"major": 3,
+		"minor": 20,
+		"patch": 0
+	},
+	"configurePresets": [
+		{
+			"name": "ninja_win32",
+			"generator": "Ninja",
+			"displayName": "[Ninja] Win32",
+			"description": "Ninja Win32 preset",
+			"binaryDir": "${sourceDir}/build/ninja_win32",
+			"warnings": {
+				"dev": false,
+				"unusedCli": true,
+				"systemVars": true,
+				"uninitialized": true
+			},
+			"cacheVariables": {
+				"CMAKE_C_STANDARD": "99",
+				"CMAKE_CXX_STANDARD": "17",
+				"CMAKE_CXX_STANDARD_REQUIRED": "ON",
+				"CMAKE_EXPORT_COMPILE_COMMANDS": true,
+				"CMAKE_CXX_FLAGS": "/MP16 /wd4005 /wd4015 /wd4244 /wd4018 /wd4091 /wd4996 /wd26812 /we4834 /we4584 /EHsc",
+				"CMAKE_EXE_LINKER_FLAGS": "/SAFESEH:NO",
+				"CMAKE_C_COMPILER": "cl",
+				"CMAKE_CXX_COMPILER": "cl"
+			},
+			"vendor": {
+				"microsoft.com/VisualStudioSettings/CMake/1.0": {
+					"hostOS": [ "Windows" ],
+					"intelliSenseMode": "windows-msvc-x86"
+				}
+			}
+		},
+		{
+			"name": "ninja_macos",
+			"generator": "Ninja",
+			"displayName": "[Ninja] MacOS",
+			"description": "Ninja MacOS preset",
+			"binaryDir": "${sourceDir}/build/ninja_macos",
+			"warnings": {
+				"dev": false,
+				"unusedCli": true,
+				"systemVars": true,
+				"uninitialized": true
+			},
+			"cacheVariables": {
+				"CMAKE_C_STANDARD": "99",
+				"CMAKE_CXX_STANDARD": "17",
+				"CMAKE_CXX_STANDARD_REQUIRED": "ON",
+				"CMAKE_EXPORT_COMPILE_COMMANDS": true,
+				"CMAKE_CXX_FLAGS": "-std=c++17 -fno-aligned-allocation -Wno-inconsistent-missing-override -Wno-shorten-64-to-32 -Wno-switch -Wno-nullability-completeness -Wno-deprecated-declarations",
+				"CMAKE_C_COMPILER": "clang",
+				"CMAKE_CXX_COMPILER": "clang++"
+			}
+		}
+	],
+	"buildPresets": [
+		{
+			"name": "ninja_win32_debug",
+			"displayName": "Debug",
+			"configuration": "Debug",
+			"targets": ["sut"],
+			"configurePreset": "ninja_win32"
+		},
+		{
+			"name": "ninja_dev_macos_debug",
+			"displayName": "Debug",
+			"configuration": "Debug",
+			"targets": ["sut"],
+			"configurePreset": "ninja_macos"
+		}
+	]
+}
